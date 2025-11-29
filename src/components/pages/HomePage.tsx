@@ -4,6 +4,8 @@ import { Zap, TrendingUp, Shield, MapPin, Phone, MessageCircle, ArrowRight, Chec
 import { Button } from '@/components/ui/button';
 import { Image } from '@/components/ui/image';
 
+const WHATSAPP_LINK = 'https://wa.me/message/V5CZDZ4UYO5GI1';
+
 export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -63,9 +65,11 @@ export default function HomePage() {
               Contact
             </a>
           </nav>
-          <Button className="bg-[#0066CC] text-white font-heading text-sm px-6 py-2 rounded-full hover:bg-black transition-colors">
-            Book Now
-          </Button>
+          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+            <Button className="bg-[#0066CC] text-white font-heading text-sm px-6 py-2 rounded-full hover:bg-black transition-colors">
+              Book Now
+            </Button>
+          </a>
         </div>
       </header>
 
@@ -85,9 +89,11 @@ export default function HomePage() {
               Premium rental solutions for adventurers, travelers, and explorers. Choose your ride, embrace your journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-[#0066CC] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#FFD700] hover:text-black transition-all">
-                Explore Services
-              </Button>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-[#0066CC] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#FFD700] hover:text-black transition-all">
+                  Explore Services
+                </Button>
+              </a>
               <Button variant="outline" className="bg-transparent border-2 border-white text-white font-heading text-base px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all">
                 Learn More
               </Button>
@@ -147,9 +153,11 @@ export default function HomePage() {
                   <span className="font-paragraph text-gray-700">Insurance included</span>
                 </li>
               </ul>
-              <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
-                Rent a Scooter
-              </Button>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
+                  Rent a Scooter
+                </Button>
+              </a>
             </motion.div>
 
             {/* Cars & Bikes */}
@@ -182,9 +190,11 @@ export default function HomePage() {
                   <span className="font-paragraph text-gray-700">Free delivery & pickup</span>
                 </li>
               </ul>
-              <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
-                Explore Fleet
-              </Button>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
+                  Explore Fleet
+                </Button>
+              </a>
             </motion.div>
           </motion.div>
         </div>
@@ -307,9 +317,11 @@ export default function HomePage() {
               </div>
             </div>
             <div className="mt-12 pt-12 border-t border-white/20">
-              <Button className="w-full bg-[#0066CC] text-white font-heading text-lg py-4 rounded-full hover:bg-[#FFD700] hover:text-black transition-colors">
-                Invest Now <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="block">
+                <Button className="w-full bg-[#0066CC] text-white font-heading text-lg py-4 rounded-full hover:bg-[#FFD700] hover:text-black transition-colors">
+                  Invest Now <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -328,12 +340,16 @@ export default function HomePage() {
               Join thousands of satisfied customers and experience premium mobility solutions
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-black text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#0066CC] transition-colors">
-                Book Your Ride
-              </Button>
-              <Button className="bg-[#0066CC] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-black transition-colors">
-                Become an Investor
-              </Button>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-black text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#0066CC] transition-colors">
+                  Book Your Ride
+                </Button>
+              </a>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-[#0066CC] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-black transition-colors">
+                  Become an Investor
+                </Button>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -368,7 +384,9 @@ export default function HomePage() {
             <div>
               <h4 className="font-heading text-lg mb-4">Contact</h4>
               <p className="font-paragraph text-white/80 text-sm mb-2">Email: info@rentigo.com</p>
-              <p className="font-paragraph text-white/80 text-sm">Phone: +91 9876543210</p>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="font-paragraph text-white/80 text-sm hover:text-white transition-colors inline-block">
+                WhatsApp: Message Us
+              </a>
             </div>
           </div>
           <div className="border-t border-white/20 pt-8 text-center">
@@ -381,7 +399,7 @@ export default function HomePage() {
 
       {/* Floating WhatsApp Button */}
       <motion.a
-        href="https://wa.me/919876543210"
+        href={WHATSAPP_LINK}
         target="_blank"
         rel="noopener noreferrer"
         initial={{ scale: 0 }}
