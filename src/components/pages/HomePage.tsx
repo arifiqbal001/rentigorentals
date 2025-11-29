@@ -1,325 +1,408 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { BaseCrudService } from '@/integrations';
-import { Vehicles } from '@/entities';
-import { Image } from '@/components/ui/image';
-import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { Car, Bike, Zap } from 'lucide-react';
+import { Zap, TrendingUp, Shield, MapPin, Phone, MessageCircle, ArrowRight, Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function HomePage() {
-  const [vehicles, setVehicles] = useState<Vehicles[]>([]);
-  const [filteredVehicles, setFilteredVehicles] = useState<Vehicles[]>([]);
-  const [selectedType, setSelectedType] = useState<string>('all');
-  const [isLoading, setIsLoading] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    loadVehicles();
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (selectedType === 'all') {
-      setFilteredVehicles(vehicles);
-    } else {
-      setFilteredVehicles(vehicles.filter(v => v.type?.toLowerCase() === selectedType.toLowerCase()));
-    }
-  }, [selectedType, vehicles]);
-
-  const loadVehicles = async () => {
-    try {
-      const { items } = await BaseCrudService.getAll<Vehicles>('vehicles');
-      setVehicles(items);
-      setFilteredVehicles(items);
-    } catch (error) {
-      console.error('Error loading vehicles:', error);
-    } finally {
-      setIsLoading(false);
-    }
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
   };
 
-  const vehicleTypes = [
-    { id: 'all', label: 'All Vehicles', icon: null },
-    { id: 'car', label: 'Cars', icon: Car },
-    { id: 'bike', label: 'Bikes', icon: Bike },
-    { id: 'scooty', label: 'Scooties', icon: Zap },
-  ];
-
-  const getTypeIcon = (type: string) => {
-    const lowerType = type?.toLowerCase();
-    if (lowerType === 'car') return Car;
-    if (lowerType === 'bike') return Bike;
-    if (lowerType === 'scooty') return Zap;
-    return null;
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
   };
 
   return (
-    <div className="min-h-screen bg-secondary">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-background border-b border-borderaccent">
-        <div className="max-w-[120rem] mx-auto px-8 py-6">
-          <div className="flex justify-between items-center">
-            <h2 className="font-heading text-2xl text-primary">VELOCITY RENTALS</h2>
-            <nav className="flex gap-8">
-              <a href="#vehicles" className="font-paragraph text-base text-secondary-foreground hover:opacity-70 transition-opacity">
-                Vehicles
-              </a>
-              <a href="#about" className="font-paragraph text-base text-secondary-foreground hover:opacity-70 transition-opacity">
-                About
-              </a>
-              <a href="#contact" className="font-paragraph text-base text-secondary-foreground hover:opacity-70 transition-opacity">
-                Contact
-              </a>
-            </nav>
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-md' : 'bg-white'
+      }`}>
+        <div className="max-w-[120rem] mx-auto px-8 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-[#0A3D62] rounded-lg flex items-center justify-center">
+              <Zap className="w-6 h-6 text-white" />
+            </div>
+            <h1 className="font-heading text-2xl font-bold text-[#0A3D62]">RentigoRental</h1>
           </div>
+          <nav className="hidden md:flex gap-8">
+            <a href="#services" className="font-paragraph text-sm text-[#0A3D62] hover:text-[#1E90FF] transition-colors">
+              Services
+            </a>
+            <a href="#invest" className="font-paragraph text-sm text-[#0A3D62] hover:text-[#1E90FF] transition-colors">
+              Invest
+            </a>
+            <a href="#about" className="font-paragraph text-sm text-[#0A3D62] hover:text-[#1E90FF] transition-colors">
+              About
+            </a>
+            <a href="#contact" className="font-paragraph text-sm text-[#0A3D62] hover:text-[#1E90FF] transition-colors">
+              Contact
+            </a>
+          </nav>
+          <Button className="bg-[#1E90FF] text-white font-heading text-sm px-6 py-2 rounded-full hover:bg-[#0A3D62] transition-colors">
+            Book Now
+          </Button>
         </div>
       </header>
 
-      {/* Hero Section - Inspired by the image layout */}
-      <section className="w-full bg-primary py-24 px-8">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-8 bg-gradient-to-br from-[#0A3D62] to-[#1E90FF]">
         <div className="max-w-[120rem] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl text-primary-foreground mb-16 tracking-wide">
-              FREEDOM ON WHEELS: EXPLORE<br />THE CITY, YOUR WAY.
-            </h1>
-            
-            <div className="flex justify-center mb-16">
-              <div className="relative">
-                <Image
-                  src="https://static.wixstatic.com/media/2ab110_0115c08c608d444e820b880193fc8636~mv2.png?originWidth=576&originHeight=384"
-                  alt="Featured rental vehicle"
-                  width={600}
-                  className="w-full max-w-md md:max-w-lg lg:max-w-xl"
-                />
-                <p className="font-paragraph text-sm text-primary-foreground mt-4 tracking-wider">
-                  PREMIUM FLEET
-                </p>
-              </div>
-            </div>
-
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-primary-foreground tracking-wide">
-              DISCOVER YOUR PERFECT RIDE<br />FOR EVERY JOURNEY.
+            <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">
+              Mobility Reimagined
             </h2>
+            <p className="font-paragraph text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-12">
+              Premium rental solutions for gig workers, daily commuters, and adventurers. Choose your ride, embrace your freedom.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-white text-[#0A3D62] font-heading text-base px-8 py-3 rounded-full hover:bg-[#1E90FF] hover:text-white transition-all">
+                Explore Services
+              </Button>
+              <Button variant="outline" className="bg-transparent border-2 border-white text-white font-heading text-base px-8 py-3 rounded-full hover:bg-white hover:text-[#0A3D62] transition-all">
+                Learn More
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Filter Section */}
-      <section id="vehicles" className="w-full bg-secondary py-16 px-8">
+      {/* Services Section */}
+      <section id="services" className="py-24 px-8 bg-white">
         <div className="max-w-[120rem] mx-auto">
-          <div className="flex justify-center gap-4 flex-wrap mb-16">
-            {vehicleTypes.map((type) => {
-              const Icon = type.icon;
-              return (
-                <Button
-                  key={type.id}
-                  onClick={() => setSelectedType(type.id)}
-                  variant={selectedType === type.id ? 'default' : 'outline'}
-                  className={`font-heading text-base px-8 py-6 ${
-                    selectedType === type.id
-                      ? 'bg-primary text-primary-foreground border-primary'
-                      : 'bg-transparent text-secondary-foreground border-borderaccent hover:bg-primary hover:text-primary-foreground'
-                  }`}
-                >
-                  {Icon && <Icon className="w-5 h-5 mr-2" />}
-                  {type.label}
-                </Button>
-              );
-            })}
-          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-heading text-4xl md:text-5xl text-[#0A3D62] mb-4">Our Services</h2>
+            <p className="font-paragraph text-lg text-gray-600 max-w-2xl mx-auto">
+              Tailored mobility solutions for every need and budget
+            </p>
+          </motion.div>
 
-          {/* Vehicles Grid */}
-          {isLoading ? (
-            <div className="text-center py-20">
-              <p className="font-paragraph text-lg text-secondary-foreground">Loading vehicles...</p>
-            </div>
-          ) : filteredVehicles.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="font-paragraph text-lg text-secondary-foreground">No vehicles available in this category.</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredVehicles.map((vehicle, index) => {
-                const TypeIcon = getTypeIcon(vehicle.type || '');
-                return (
-                  <motion.div
-                    key={vehicle._id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                  >
-                    <Link to={`/vehicle/${vehicle._id}`}>
-                      <div className="bg-background border border-borderaccent overflow-hidden hover:shadow-lg transition-shadow group">
-                        <div className="aspect-[4/3] overflow-hidden bg-secondary">
-                          {vehicle.mainImage ? (
-                            <Image
-                              src={vehicle.mainImage}
-                              alt={vehicle.name || 'Vehicle'}
-                              width={600}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center">
-                              {TypeIcon && <TypeIcon className="w-20 h-20 text-borderaccent opacity-30" />}
-                            </div>
-                          )}
-                        </div>
-                        <div className="p-6">
-                          <div className="flex items-center gap-2 mb-2">
-                            {TypeIcon && <TypeIcon className="w-4 h-4 text-primary" />}
-                            <span className="font-paragraph text-xs text-secondary-foreground uppercase tracking-wider">
-                              {vehicle.type}
-                            </span>
-                          </div>
-                          <h3 className="font-heading text-2xl text-primary mb-3">
-                            {vehicle.name}
-                          </h3>
-                          <p className="font-paragraph text-base text-secondary-foreground mb-4 line-clamp-2">
-                            {vehicle.description}
-                          </p>
-                          <div className="flex justify-between items-center pt-4 border-t border-borderaccent">
-                            <div>
-                              <p className="font-paragraph text-sm text-secondary-foreground mb-1">
-                                Per Day
-                              </p>
-                              <p className="font-heading text-3xl text-primary">
-                                ${vehicle.rentalPricePerDay}
-                              </p>
-                            </div>
-                            <div className="text-right">
-                              <p className="font-paragraph text-sm text-secondary-foreground mb-1">
-                                Seats
-                              </p>
-                              <p className="font-heading text-xl text-primary">
-                                {vehicle.numberOfSeats}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="mt-4">
-                            <span
-                              className={`inline-block px-4 py-2 font-paragraph text-sm ${
-                                vehicle.isAvailable
-                                  ? 'bg-primary text-primary-foreground'
-                                  : 'bg-secondary text-secondary-foreground border border-borderaccent'
-                              }`}
-                            >
-                              {vehicle.isAvailable ? 'Available' : 'Not Available'}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-          )}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
+            {/* Scooters for Gig Workers */}
+            <motion.div
+              variants={itemVariants}
+              className="bg-white border-2 border-[#0A3D62] rounded-3xl p-8 hover:shadow-xl transition-shadow"
+            >
+              <div className="w-16 h-16 bg-[#1E90FF] rounded-2xl flex items-center justify-center mb-6">
+                <Zap className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="font-heading text-2xl text-[#0A3D62] mb-4">Scooters for Gig Workers</h3>
+              <p className="font-paragraph text-gray-600 mb-6">
+                Affordable, reliable scooters designed for delivery partners and gig economy workers. Perfect for daily commutes with minimal maintenance.
+              </p>
+              <div className="bg-[#F0F8FF] rounded-2xl p-6 mb-6">
+                <p className="font-heading text-3xl text-[#0A3D62] mb-2">₹250<span className="text-lg">/day</span></p>
+                <p className="font-paragraph text-sm text-gray-600">Flexible daily rental</p>
+              </div>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <span className="font-paragraph text-gray-700">Fuel-efficient & eco-friendly</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <span className="font-paragraph text-gray-700">24/7 roadside support</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <span className="font-paragraph text-gray-700">Insurance included</span>
+                </li>
+              </ul>
+              <Button className="w-full bg-[#1E90FF] text-white font-heading rounded-full py-3 hover:bg-[#0A3D62] transition-colors">
+                Rent a Scooter
+              </Button>
+            </motion.div>
+
+            {/* Cars & Bikes */}
+            <motion.div
+              variants={itemVariants}
+              className="bg-white border-2 border-[#0A3D62] rounded-3xl p-8 hover:shadow-xl transition-shadow"
+            >
+              <div className="w-16 h-16 bg-[#1E90FF] rounded-2xl flex items-center justify-center mb-6">
+                <TrendingUp className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="font-heading text-2xl text-[#0A3D62] mb-4">Cars & Bikes</h3>
+              <p className="font-paragraph text-gray-600 mb-6">
+                Premium vehicles for daily use and tourist adventures. Comfortable, well-maintained, and ready for your next journey.
+              </p>
+              <div className="bg-[#F0F8FF] rounded-2xl p-6 mb-6">
+                <p className="font-heading text-3xl text-[#0A3D62] mb-2">From ₹500<span className="text-lg">/day</span></p>
+                <p className="font-paragraph text-sm text-gray-600">Flexible rental periods</p>
+              </div>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <span className="font-paragraph text-gray-700">Wide vehicle selection</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <span className="font-paragraph text-gray-700">Hourly, daily & weekly rates</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <span className="font-paragraph text-gray-700">Free delivery & pickup</span>
+                </li>
+              </ul>
+              <Button className="w-full bg-[#1E90FF] text-white font-heading rounded-full py-3 hover:bg-[#0A3D62] transition-colors">
+                Explore Fleet
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="w-full bg-primary py-24 px-8">
-        <div className="max-w-[100rem] mx-auto text-center">
-          <h2 className="font-heading text-5xl md:text-6xl text-primary-foreground mb-8 tracking-wide">
-            WHY CHOOSE US
-          </h2>
-          <p className="font-paragraph text-lg text-primary-foreground max-w-3xl mx-auto mb-16 leading-relaxed">
-            Experience the ultimate freedom with our premium fleet of vehicles. Whether you need a car for a business trip, a bike for weekend adventures, or a scooty for city commutes, we have the perfect ride waiting for you.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
-            <div className="text-center">
-              <h3 className="font-heading text-3xl text-primary-foreground mb-4">FLEXIBLE RENTALS</h3>
-              <p className="font-paragraph text-base text-primary-foreground">
-                Rent by the hour, day, or week. We adapt to your schedule.
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="font-heading text-3xl text-primary-foreground mb-4">PREMIUM FLEET</h3>
-              <p className="font-paragraph text-base text-primary-foreground">
-                Well-maintained vehicles that guarantee comfort and safety.
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="font-heading text-3xl text-primary-foreground mb-4">EASY BOOKING</h3>
-              <p className="font-paragraph text-base text-primary-foreground">
-                Simple process to get you on the road in minutes.
-              </p>
-            </div>
-          </div>
+      {/* Why Choose Us */}
+      <section id="about" className="py-24 px-8 bg-[#F0F8FF]">
+        <div className="max-w-[120rem] mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-heading text-4xl md:text-5xl text-[#0A3D62] mb-4">Why Choose RentigoRental?</h2>
+            <p className="font-paragraph text-lg text-gray-600 max-w-2xl mx-auto">
+              We're committed to providing the best rental experience
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                icon: Shield,
+                title: 'Trusted & Secure',
+                description: 'Verified vehicles with comprehensive insurance coverage',
+              },
+              {
+                icon: MapPin,
+                title: 'Easy Booking',
+                description: 'Simple online process with instant confirmation',
+              },
+              {
+                icon: TrendingUp,
+                title: 'Best Prices',
+                description: 'Competitive rates with transparent pricing',
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="bg-white rounded-2xl p-8 text-center hover:shadow-lg transition-shadow"
+              >
+                <div className="w-16 h-16 bg-[#1E90FF] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <item.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-heading text-xl text-[#0A3D62] mb-3">{item.title}</h3>
+                <p className="font-paragraph text-gray-600">{item.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="w-full bg-secondary py-24 px-8">
+      {/* Investment Section */}
+      <section id="invest" className="py-24 px-8 bg-white">
+        <div className="max-w-[120rem] mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-heading text-4xl md:text-5xl text-[#0A3D62] mb-4">Investment Opportunity</h2>
+            <p className="font-paragraph text-lg text-gray-600 max-w-2xl mx-auto">
+              Grow your wealth with our proven scooter rental model
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-gradient-to-br from-[#0A3D62] to-[#1E90FF] rounded-3xl p-12 text-white max-w-3xl mx-auto"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <h3 className="font-heading text-3xl mb-8">Investment Package</h3>
+                <div className="space-y-6">
+                  <div>
+                    <p className="font-paragraph text-white/80 text-sm mb-2">Initial Investment</p>
+                    <p className="font-heading text-4xl">₹15,000</p>
+                  </div>
+                  <div>
+                    <p className="font-paragraph text-white/80 text-sm mb-2">Monthly Payout</p>
+                    <p className="font-heading text-4xl">₹15,000</p>
+                  </div>
+                  <div>
+                    <p className="font-paragraph text-white/80 text-sm mb-2">Duration</p>
+                    <p className="font-heading text-4xl">36 Months</p>
+                  </div>
+                  <div>
+                    <p className="font-paragraph text-white/80 text-sm mb-2">Scooters Included</p>
+                    <p className="font-heading text-4xl">4 Units</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 className="font-heading text-2xl mb-6">What You Get</h3>
+                <ul className="space-y-4">
+                  {[
+                    '4 fully maintained scooters',
+                    'Complete insurance coverage',
+                    'Regular maintenance & repairs',
+                    'Guaranteed monthly returns',
+                    'Dedicated support team',
+                    'Flexible exit options',
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <Check className="w-6 h-6 text-white flex-shrink-0 mt-1" />
+                      <span className="font-paragraph text-white">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="mt-12 pt-12 border-t border-white/20">
+              <Button className="w-full bg-white text-[#0A3D62] font-heading text-lg py-4 rounded-full hover:bg-[#F0F8FF] transition-colors">
+                Invest Now <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section id="contact" className="py-24 px-8 bg-[#F0F8FF]">
         <div className="max-w-[100rem] mx-auto text-center">
-          <h2 className="font-heading text-5xl md:text-6xl text-primary mb-8 tracking-wide">
-            GET IN TOUCH
-          </h2>
-          <p className="font-paragraph text-lg text-secondary-foreground max-w-2xl mx-auto mb-12">
-            Ready to hit the road? Contact us today to reserve your vehicle or learn more about our services.
-          </p>
-          <div className="flex flex-col md:flex-row gap-6 justify-center">
-            <Button className="bg-primary text-primary-foreground font-heading text-lg px-12 py-6 hover:opacity-90">
-              BOOK NOW
-            </Button>
-            <Button variant="outline" className="bg-transparent text-secondary-foreground border-borderaccent font-heading text-lg px-12 py-6 hover:bg-primary hover:text-primary-foreground hover:border-primary">
-              CALL US
-            </Button>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-heading text-4xl md:text-5xl text-[#0A3D62] mb-6">Ready to Get Started?</h2>
+            <p className="font-paragraph text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+              Join thousands of satisfied customers and experience premium mobility solutions
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-[#0A3D62] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#1E90FF] transition-colors">
+                Book Your Ride
+              </Button>
+              <Button className="bg-[#1E90FF] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#0A3D62] transition-colors">
+                Become an Investor
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-background border-t border-borderaccent py-12 px-8">
+      <footer className="bg-[#0A3D62] text-white py-12 px-8">
         <div className="max-w-[120rem] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="font-heading text-xl text-primary mb-4">VELOCITY RENTALS</h3>
-              <p className="font-paragraph text-base text-secondary-foreground">
-                Your trusted partner for vehicle rentals. Freedom on wheels, delivered.
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-[#1E90FF] rounded-lg flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="font-heading text-lg">RentigoRental</h3>
+              </div>
+              <p className="font-paragraph text-white/80 text-sm">
+                Premium mobility solutions for everyone
               </p>
             </div>
             <div>
-              <h4 className="font-heading text-lg text-primary mb-4">QUICK LINKS</h4>
+              <h4 className="font-heading text-lg mb-4">Services</h4>
               <ul className="space-y-2">
-                <li>
-                  <a href="#vehicles" className="font-paragraph text-base text-secondary-foreground hover:opacity-70">
-                    Vehicles
-                  </a>
-                </li>
-                <li>
-                  <a href="#about" className="font-paragraph text-base text-secondary-foreground hover:opacity-70">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#contact" className="font-paragraph text-base text-secondary-foreground hover:opacity-70">
-                    Contact
-                  </a>
-                </li>
+                <li><a href="#services" className="font-paragraph text-white/80 text-sm hover:text-white">Scooters</a></li>
+                <li><a href="#services" className="font-paragraph text-white/80 text-sm hover:text-white">Cars & Bikes</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-heading text-lg text-primary mb-4">CONTACT INFO</h4>
-              <p className="font-paragraph text-base text-secondary-foreground mb-2">
-                Email: info@velocityrentals.com
-              </p>
-              <p className="font-paragraph text-base text-secondary-foreground">
-                Phone: (555) 123-4567
-              </p>
+              <h4 className="font-heading text-lg mb-4">Company</h4>
+              <ul className="space-y-2">
+                <li><a href="#about" className="font-paragraph text-white/80 text-sm hover:text-white">About Us</a></li>
+                <li><a href="#invest" className="font-paragraph text-white/80 text-sm hover:text-white">Invest</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-heading text-lg mb-4">Contact</h4>
+              <p className="font-paragraph text-white/80 text-sm mb-2">Email: info@rentigo.com</p>
+              <p className="font-paragraph text-white/80 text-sm">Phone: +91 9876543210</p>
             </div>
           </div>
-          <div className="border-t border-borderaccent pt-8 text-center">
-            <p className="font-paragraph text-sm text-secondary-foreground">
-              © 2025 Velocity Rentals. All rights reserved.
+          <div className="border-t border-white/20 pt-8 text-center">
+            <p className="font-paragraph text-white/80 text-sm">
+              © 2025 RentigoRental. All rights reserved.
             </p>
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <motion.a
+        href="https://wa.me/919876543210"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        className="fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow z-40"
+      >
+        <MessageCircle className="w-7 h-7 text-white" />
+      </motion.a>
+
+      {/* Floating CTA Button */}
+      <motion.button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        className="fixed bottom-8 left-8 w-14 h-14 bg-[#1E90FF] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow z-40"
+      >
+        <Phone className="w-7 h-7 text-white" />
+      </motion.button>
     </div>
   );
 }
