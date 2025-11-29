@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, TrendingUp, Shield, MapPin, Phone, MessageCircle, ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Image } from '@/components/ui/image';
 
 export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,34 +42,35 @@ export default function HomePage() {
         isScrolled ? 'bg-white shadow-md' : 'bg-white'
       }`}>
         <div className="max-w-[120rem] mx-auto px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-[#0A3D62] rounded-lg flex items-center justify-center">
-              <Zap className="w-6 h-6 text-white" />
+          <div className="flex items-center gap-3">
+            <Image src="https://static.wixstatic.com/media/2ab110_f0c045c52bac496fa9a7ff186bfc437e~mv2.jpg" alt="Rentigo Tours & Travels Logo" className="h-12 w-auto" />
+            <div>
+              <h1 className="font-heading text-xl font-bold text-black">RENTIGO</h1>
+              <p className="font-paragraph text-xs text-gray-700 tracking-wider">TOURS & TRAVELS</p>
             </div>
-            <h1 className="font-heading text-2xl font-bold text-[#0A3D62]">RentigoRental</h1>
           </div>
           <nav className="hidden md:flex gap-8">
-            <a href="#services" className="font-paragraph text-sm text-[#0A3D62] hover:text-[#1E90FF] transition-colors">
+            <a href="#services" className="font-paragraph text-sm text-black hover:text-[#0066CC] transition-colors">
               Services
             </a>
-            <a href="#invest" className="font-paragraph text-sm text-[#0A3D62] hover:text-[#1E90FF] transition-colors">
+            <a href="#invest" className="font-paragraph text-sm text-black hover:text-[#0066CC] transition-colors">
               Invest
             </a>
-            <a href="#about" className="font-paragraph text-sm text-[#0A3D62] hover:text-[#1E90FF] transition-colors">
+            <a href="#about" className="font-paragraph text-sm text-black hover:text-[#0066CC] transition-colors">
               About
             </a>
-            <a href="#contact" className="font-paragraph text-sm text-[#0A3D62] hover:text-[#1E90FF] transition-colors">
+            <a href="#contact" className="font-paragraph text-sm text-black hover:text-[#0066CC] transition-colors">
               Contact
             </a>
           </nav>
-          <Button className="bg-[#1E90FF] text-white font-heading text-sm px-6 py-2 rounded-full hover:bg-[#0A3D62] transition-colors">
+          <Button className="bg-[#0066CC] text-white font-heading text-sm px-6 py-2 rounded-full hover:bg-black transition-colors">
             Book Now
           </Button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-8 bg-gradient-to-br from-[#0A3D62] to-[#1E90FF]">
+      <section className="pt-32 pb-20 px-8 bg-gradient-to-br from-black to-[#1a1a1a]">
         <div className="max-w-[120rem] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -77,16 +79,16 @@ export default function HomePage() {
             className="text-center"
           >
             <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">
-              Mobility Reimagined
+              Explore the World Your Way
             </h2>
             <p className="font-paragraph text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-12">
-              Premium rental solutions for gig workers, daily commuters, and adventurers. Choose your ride, embrace your freedom.
+              Premium rental solutions for adventurers, travelers, and explorers. Choose your ride, embrace your journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-white text-[#0A3D62] font-heading text-base px-8 py-3 rounded-full hover:bg-[#1E90FF] hover:text-white transition-all">
+              <Button className="bg-[#0066CC] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#FFD700] hover:text-black transition-all">
                 Explore Services
               </Button>
-              <Button variant="outline" className="bg-transparent border-2 border-white text-white font-heading text-base px-8 py-3 rounded-full hover:bg-white hover:text-[#0A3D62] transition-all">
+              <Button variant="outline" className="bg-transparent border-2 border-white text-white font-heading text-base px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all">
                 Learn More
               </Button>
             </div>
@@ -103,8 +105,8 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="font-heading text-4xl md:text-5xl text-[#0A3D62] mb-4">Our Services</h2>
-            <p className="font-paragraph text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="font-heading text-4xl md:text-5xl text-black mb-4">Our Services</h2>
+            <p className="font-paragraph text-lg text-gray-700 max-w-2xl mx-auto">
               Tailored mobility solutions for every need and budget
             </p>
           </motion.div>
@@ -118,34 +120,34 @@ export default function HomePage() {
             {/* Scooters for Gig Workers */}
             <motion.div
               variants={itemVariants}
-              className="bg-white border-2 border-[#0A3D62] rounded-3xl p-8 hover:shadow-xl transition-shadow"
+              className="bg-white border-2 border-black rounded-3xl p-8 hover:shadow-xl transition-shadow"
             >
-              <div className="w-16 h-16 bg-[#1E90FF] rounded-2xl flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-[#0066CC] rounded-2xl flex items-center justify-center mb-6">
                 <Zap className="w-8 h-8 text-white" />
               </div>
-              <h3 className="font-heading text-2xl text-[#0A3D62] mb-4">Scooters for Gig Workers</h3>
-              <p className="font-paragraph text-gray-600 mb-6">
+              <h3 className="font-heading text-2xl text-black mb-4">Scooters for Gig Workers</h3>
+              <p className="font-paragraph text-gray-700 mb-6">
                 Affordable, reliable scooters designed for delivery partners and gig economy workers. Perfect for daily commutes with minimal maintenance.
               </p>
               <div className="bg-[#F0F8FF] rounded-2xl p-6 mb-6">
-                <p className="font-heading text-3xl text-[#0A3D62] mb-2">₹250<span className="text-lg">/day</span></p>
-                <p className="font-paragraph text-sm text-gray-600">Flexible daily rental</p>
+                <p className="font-heading text-3xl text-[#0066CC] mb-2">₹250<span className="text-lg">/day</span></p>
+                <p className="font-paragraph text-sm text-gray-700">Flexible daily rental</p>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <Check className="w-5 h-5 text-[#0066CC]" />
                   <span className="font-paragraph text-gray-700">Fuel-efficient & eco-friendly</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <Check className="w-5 h-5 text-[#0066CC]" />
                   <span className="font-paragraph text-gray-700">24/7 roadside support</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <Check className="w-5 h-5 text-[#0066CC]" />
                   <span className="font-paragraph text-gray-700">Insurance included</span>
                 </li>
               </ul>
-              <Button className="w-full bg-[#1E90FF] text-white font-heading rounded-full py-3 hover:bg-[#0A3D62] transition-colors">
+              <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
                 Rent a Scooter
               </Button>
             </motion.div>
@@ -153,34 +155,34 @@ export default function HomePage() {
             {/* Cars & Bikes */}
             <motion.div
               variants={itemVariants}
-              className="bg-white border-2 border-[#0A3D62] rounded-3xl p-8 hover:shadow-xl transition-shadow"
+              className="bg-white border-2 border-black rounded-3xl p-8 hover:shadow-xl transition-shadow"
             >
-              <div className="w-16 h-16 bg-[#1E90FF] rounded-2xl flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-[#0066CC] rounded-2xl flex items-center justify-center mb-6">
                 <TrendingUp className="w-8 h-8 text-white" />
               </div>
-              <h3 className="font-heading text-2xl text-[#0A3D62] mb-4">Cars & Bikes</h3>
-              <p className="font-paragraph text-gray-600 mb-6">
+              <h3 className="font-heading text-2xl text-black mb-4">Cars & Bikes</h3>
+              <p className="font-paragraph text-gray-700 mb-6">
                 Premium vehicles for daily use and tourist adventures. Comfortable, well-maintained, and ready for your next journey.
               </p>
               <div className="bg-[#F0F8FF] rounded-2xl p-6 mb-6">
-                <p className="font-heading text-3xl text-[#0A3D62] mb-2">From ₹500<span className="text-lg">/day</span></p>
-                <p className="font-paragraph text-sm text-gray-600">Flexible rental periods</p>
+                <p className="font-heading text-3xl text-[#0066CC] mb-2">From ₹500<span className="text-lg">/day</span></p>
+                <p className="font-paragraph text-sm text-gray-700">Flexible rental periods</p>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <Check className="w-5 h-5 text-[#0066CC]" />
                   <span className="font-paragraph text-gray-700">Wide vehicle selection</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <Check className="w-5 h-5 text-[#0066CC]" />
                   <span className="font-paragraph text-gray-700">Hourly, daily & weekly rates</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-[#1E90FF]" />
+                  <Check className="w-5 h-5 text-[#0066CC]" />
                   <span className="font-paragraph text-gray-700">Free delivery & pickup</span>
                 </li>
               </ul>
-              <Button className="w-full bg-[#1E90FF] text-white font-heading rounded-full py-3 hover:bg-[#0A3D62] transition-colors">
+              <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
                 Explore Fleet
               </Button>
             </motion.div>
@@ -189,7 +191,7 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section id="about" className="py-24 px-8 bg-[#F0F8FF]">
+      <section id="about" className="py-24 px-8 bg-[#F5F5F5]">
         <div className="max-w-[120rem] mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -197,8 +199,8 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="font-heading text-4xl md:text-5xl text-[#0A3D62] mb-4">Why Choose RentigoRental?</h2>
-            <p className="font-paragraph text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="font-heading text-4xl md:text-5xl text-black mb-4">Why Choose Rentigo?</h2>
+            <p className="font-paragraph text-lg text-gray-700 max-w-2xl mx-auto">
               We're committed to providing the best rental experience
             </p>
           </motion.div>
@@ -229,13 +231,13 @@ export default function HomePage() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white rounded-2xl p-8 text-center hover:shadow-lg transition-shadow"
+                className="bg-white rounded-2xl p-8 text-center hover:shadow-lg transition-shadow border border-gray-200"
               >
-                <div className="w-16 h-16 bg-[#1E90FF] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-[#0066CC] rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <item.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-heading text-xl text-[#0A3D62] mb-3">{item.title}</h3>
-                <p className="font-paragraph text-gray-600">{item.description}</p>
+                <h3 className="font-heading text-xl text-black mb-3">{item.title}</h3>
+                <p className="font-paragraph text-gray-700">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -251,8 +253,8 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="font-heading text-4xl md:text-5xl text-[#0A3D62] mb-4">Investment Opportunity</h2>
-            <p className="font-paragraph text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="font-heading text-4xl md:text-5xl text-black mb-4">Investment Opportunity</h2>
+            <p className="font-paragraph text-lg text-gray-700 max-w-2xl mx-auto">
               Grow your wealth with our proven scooter rental model
             </p>
           </motion.div>
@@ -261,7 +263,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-gradient-to-br from-[#0A3D62] to-[#1E90FF] rounded-3xl p-12 text-white max-w-3xl mx-auto"
+            className="bg-gradient-to-br from-black to-[#1a1a1a] rounded-3xl p-12 text-white max-w-3xl mx-auto"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
@@ -297,7 +299,7 @@ export default function HomePage() {
                     'Flexible exit options',
                   ].map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <Check className="w-6 h-6 text-white flex-shrink-0 mt-1" />
+                      <Check className="w-6 h-6 text-[#FFD700] flex-shrink-0 mt-1" />
                       <span className="font-paragraph text-white">{item}</span>
                     </li>
                   ))}
@@ -305,7 +307,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="mt-12 pt-12 border-t border-white/20">
-              <Button className="w-full bg-white text-[#0A3D62] font-heading text-lg py-4 rounded-full hover:bg-[#F0F8FF] transition-colors">
+              <Button className="w-full bg-[#0066CC] text-white font-heading text-lg py-4 rounded-full hover:bg-[#FFD700] hover:text-black transition-colors">
                 Invest Now <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </div>
@@ -314,22 +316,22 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="py-24 px-8 bg-[#F0F8FF]">
+      <section id="contact" className="py-24 px-8 bg-[#F5F5F5]">
         <div className="max-w-[100rem] mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-heading text-4xl md:text-5xl text-[#0A3D62] mb-6">Ready to Get Started?</h2>
-            <p className="font-paragraph text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+            <h2 className="font-heading text-4xl md:text-5xl text-black mb-6">Ready to Get Started?</h2>
+            <p className="font-paragraph text-lg text-gray-700 max-w-2xl mx-auto mb-12">
               Join thousands of satisfied customers and experience premium mobility solutions
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-[#0A3D62] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#1E90FF] transition-colors">
+              <Button className="bg-black text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#0066CC] transition-colors">
                 Book Your Ride
               </Button>
-              <Button className="bg-[#1E90FF] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#0A3D62] transition-colors">
+              <Button className="bg-[#0066CC] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-black transition-colors">
                 Become an Investor
               </Button>
             </div>
@@ -338,15 +340,12 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0A3D62] text-white py-12 px-8">
+      <footer className="bg-black text-white py-12 px-8">
         <div className="max-w-[120rem] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-[#1E90FF] rounded-lg flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="font-heading text-lg">RentigoRental</h3>
+                <Image src="https://static.wixstatic.com/media/2ab110_f0c045c52bac496fa9a7ff186bfc437e~mv2.jpg" alt="Rentigo Tours & Travels Logo" className="h-10 w-auto" />
               </div>
               <p className="font-paragraph text-white/80 text-sm">
                 Premium mobility solutions for everyone
@@ -374,7 +373,7 @@ export default function HomePage() {
           </div>
           <div className="border-t border-white/20 pt-8 text-center">
             <p className="font-paragraph text-white/80 text-sm">
-              © 2025 RentigoRental. All rights reserved.
+              © 2025 Rentigo Tours & Travels. All rights reserved.
             </p>
           </div>
         </div>
@@ -399,7 +398,7 @@ export default function HomePage() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
-        className="fixed bottom-8 left-8 w-14 h-14 bg-[#1E90FF] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow z-40"
+        className="fixed bottom-8 left-8 w-14 h-14 bg-[#0066CC] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow z-40"
       >
         <Phone className="w-7 h-7 text-white" />
       </motion.button>
