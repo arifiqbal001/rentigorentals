@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Image } from '@/components/ui/image';
 
 const WHATSAPP_LINK = 'https://wa.me/message/V5CZDZ4UYO5GI1';
+const PHONE_NUMBER = '8584004528';
+const PHONE_LINK = `tel:${PHONE_NUMBER}`;
 
 export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -384,6 +386,10 @@ export default function HomePage() {
             <div>
               <h4 className="font-heading text-lg mb-4">Contact</h4>
               <p className="font-paragraph text-white/80 text-sm mb-2">Email: info@rentigo.com</p>
+              <a href={PHONE_LINK} className="font-paragraph text-white/80 text-sm hover:text-white transition-colors inline-block mb-2">
+                Call: {PHONE_NUMBER}
+              </a>
+              <br />
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="font-paragraph text-white/80 text-sm hover:text-white transition-colors inline-block">
                 WhatsApp: Message Us
               </a>
@@ -411,15 +417,15 @@ export default function HomePage() {
       </motion.a>
 
       {/* Floating CTA Button */}
-      <motion.button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      <motion.a
+        href={PHONE_LINK}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
         className="fixed bottom-8 left-8 w-14 h-14 bg-[#0066CC] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow z-40"
       >
         <Phone className="w-7 h-7 text-white" />
-      </motion.button>
+      </motion.a>
     </div>
   );
 }
