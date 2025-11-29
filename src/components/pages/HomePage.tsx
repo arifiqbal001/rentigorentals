@@ -418,7 +418,9 @@ export default function HomePage() {
 
       {/* Floating CTA Button */}
       <motion.a
-        href={PHONE_LINK}
+        href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
