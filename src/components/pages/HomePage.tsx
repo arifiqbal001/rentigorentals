@@ -11,14 +11,23 @@ const WHATSAPP_INVEST_LINK = 'https://wa.me/message/DAMWHHMLIRVRM1';
 
 export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      setShowScrollToTop(window.scrollY > 300);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -397,6 +406,33 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* Scroll to Top Button - iOS Style */}
+      <motion.button
+        onClick={scrollToTop}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ 
+          scale: showScrollToTop ? 1 : 0, 
+          opacity: showScrollToTop ? 1 : 0 
+        }}
+        whileHover={{ scale: 1.15 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ 
+          type: 'spring', 
+          stiffness: 400, 
+          damping: 17,
+          opacity: { duration: 0.2 }
+        }}
+        className="fixed bottom-32 right-8 w-14 h-14 bg-[#0066CC] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow z-40 cursor-pointer"
+        aria-label="Scroll to top"
+      >
+        <motion.div
+          animate={{ y: showScrollToTop ? 0 : 5 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ArrowRight className="w-6 h-6 text-white rotate-[-90deg]" />
+        </motion.div>
+      </motion.button>
 
       {/* Floating WhatsApp Button */}
       <motion.a
