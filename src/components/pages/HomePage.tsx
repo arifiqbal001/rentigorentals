@@ -47,11 +47,7 @@ export default function HomePage() {
       }`}>
         <div className="max-w-[120rem] mx-auto px-8 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <Image src="https://static.wixstatic.com/media/2ab110_f0c045c52bac496fa9a7ff186bfc437e~mv2.jpg" alt="Rentigo Tours & Travels Logo" className="h-12 w-auto" />
-            <div>
-              <h1 className="font-heading text-xl font-bold text-black">RENTIGO</h1>
-              <p className="font-paragraph text-xs text-gray-700 tracking-wider">TOURS & TRAVELS</p>
-            </div>
+            <Image src="https://static.wixstatic.com/media/2ab110_bcd44db5e63648628967cad01fa030e5~mv2.jpg" alt="Rentigo Tours & Travels Logo" className="h-12 w-auto" />
           </div>
           <nav className="hidden md:flex gap-8">
             <a href="#services" className="font-paragraph text-sm text-black hover:text-[#0066CC] transition-colors">
@@ -363,7 +359,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <Image src="https://static.wixstatic.com/media/2ab110_f0c045c52bac496fa9a7ff186bfc437e~mv2.jpg" alt="Rentigo Tours & Travels Logo" className="h-10 w-auto" />
+                <Image src="https://static.wixstatic.com/media/2ab110_bcd44db5e63648628967cad01fa030e5~mv2.jpg" alt="Rentigo Tours & Travels Logo" className="h-10 w-auto" />
               </div>
               <p className="font-paragraph text-white/80 text-sm">
                 Premium mobility solutions for everyone
