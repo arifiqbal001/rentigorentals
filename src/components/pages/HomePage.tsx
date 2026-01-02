@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Zap, TrendingUp, Shield, MapPin, Phone, MessageCircle, ArrowRight, Check } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Zap, TrendingUp, Shield, MapPin, Check } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 
-const WHATSAPP_LINK = 'https://wa.me/message/V5CZDZ4UYO5GI1';
 const PHONE_NUMBER = '8584004528';
 const PHONE_LINK = `tel:${PHONE_NUMBER}`;
 
@@ -63,11 +61,6 @@ export default function HomePage() {
               Contact
             </a>
           </nav>
-          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-            <Button className="bg-[#0066CC] text-white font-heading text-sm px-6 py-2 rounded-full hover:bg-black transition-colors">
-              Book Now
-            </Button>
-          </a>
         </div>
       </header>
 
@@ -86,16 +79,6 @@ export default function HomePage() {
             <p className="font-paragraph text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-12">
               Premium rental solutions for adventurers, travelers, and explorers. Choose your ride, embrace your journey.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#0066CC] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#FFD700] hover:text-black transition-all">
-                  Explore Services
-                </Button>
-              </a>
-              <Button variant="outline" className="bg-transparent border-2 border-white text-white font-heading text-base px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all">
-                Learn More
-              </Button>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -137,7 +120,7 @@ export default function HomePage() {
                 <p className="font-heading text-3xl text-[#0066CC] mb-2">₹250<span className="text-lg">/day</span></p>
                 <p className="font-paragraph text-sm text-gray-700">Flexible daily rental</p>
               </div>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3">
                 <li className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-[#0066CC]" />
                   <span className="font-paragraph text-gray-700">Fuel-efficient & eco-friendly</span>
@@ -151,11 +134,6 @@ export default function HomePage() {
                   <span className="font-paragraph text-gray-700">Insurance included</span>
                 </li>
               </ul>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="block">
-                <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
-                  Rent a Scooter
-                </Button>
-              </a>
             </motion.div>
 
             {/* Cars & Bikes */}
@@ -174,7 +152,7 @@ export default function HomePage() {
                 <p className="font-heading text-3xl text-[#0066CC] mb-2">From ₹500<span className="text-lg">/day</span></p>
                 <p className="font-paragraph text-sm text-gray-700">Flexible rental periods</p>
               </div>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3">
                 <li className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-[#0066CC]" />
                   <span className="font-paragraph text-gray-700">Wide vehicle selection</span>
@@ -188,11 +166,6 @@ export default function HomePage() {
                   <span className="font-paragraph text-gray-700">Free delivery & pickup</span>
                 </li>
               </ul>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="block">
-                <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
-                  Explore Fleet
-                </Button>
-              </a>
             </motion.div>
           </motion.div>
         </div>
@@ -314,18 +287,11 @@ export default function HomePage() {
                 </ul>
               </div>
             </div>
-            <div className="mt-12 pt-12 border-t border-white/20">
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="block">
-                <Button className="w-full bg-[#0066CC] text-white font-heading text-lg py-4 rounded-full hover:bg-[#FFD700] hover:text-black transition-colors">
-                  Invest Now <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </a>
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Contact Section */}
       <section id="contact" className="py-24 px-8 bg-[#F5F5F5]">
         <div className="max-w-[100rem] mx-auto text-center">
           <motion.div
@@ -333,20 +299,16 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-heading text-4xl md:text-5xl text-black mb-6">Ready to Get Started?</h2>
+            <h2 className="font-heading text-4xl md:text-5xl text-black mb-6">Get in Touch</h2>
             <p className="font-paragraph text-lg text-gray-700 max-w-2xl mx-auto mb-12">
-              Join thousands of satisfied customers and experience premium mobility solutions
+              Have questions? We're here to help. Contact us for more information about our services and investment opportunities.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-black text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#0066CC] transition-colors">
-                  Book Your Ride
-                </Button>
-              </a>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#0066CC] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-black transition-colors">
-                  Become an Investor
-                </Button>
+            <div className="space-y-4">
+              <p className="font-paragraph text-lg text-gray-700">
+                <strong>Email:</strong> info@rentigo.com
+              </p>
+              <a href={PHONE_LINK} className="font-paragraph text-lg text-[#0066CC] hover:text-black transition-colors inline-block">
+                <strong>Call:</strong> {PHONE_NUMBER}
               </a>
             </div>
           </motion.div>
@@ -382,12 +344,8 @@ export default function HomePage() {
             <div>
               <h4 className="font-heading text-lg mb-4">Contact</h4>
               <p className="font-paragraph text-white/80 text-sm mb-2">Email: info@rentigo.com</p>
-              <a href={PHONE_LINK} className="font-paragraph text-white/80 text-sm hover:text-white transition-colors inline-block mb-2">
+              <a href={PHONE_LINK} className="font-paragraph text-white/80 text-sm hover:text-white transition-colors inline-block">
                 Call: {PHONE_NUMBER}
-              </a>
-              <br />
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="font-paragraph text-white/80 text-sm hover:text-white transition-colors inline-block">
-                WhatsApp: Message Us
               </a>
             </div>
           </div>
@@ -398,32 +356,6 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
-
-      {/* Floating WhatsApp Button */}
-      <motion.a
-        href={WHATSAPP_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        whileHover={{ scale: 1.1 }}
-        className="fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow z-40"
-      >
-        <MessageCircle className="w-7 h-7 text-white" />
-      </motion.a>
-
-      {/* Floating CTA Button */}
-      <motion.a
-        href={WHATSAPP_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        whileHover={{ scale: 1.1 }}
-        className="fixed bottom-8 left-8 w-14 h-14 bg-[#0066CC] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow z-40"
-      >
-        <Phone className="w-7 h-7 text-white" />
-      </motion.a>
     </div>
   );
 }
