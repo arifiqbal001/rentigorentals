@@ -283,7 +283,7 @@ export default function HomePage() {
                 <div className="space-y-6">
                   <div>
                     <p className="font-paragraph text-white/80 text-sm mb-2">Initial Investment</p>
-                    <p className="font-heading text-4xl">₹15,000</p>
+                    <p className="font-heading text-4xl">240000</p>
                   </div>
                   <div>
                     <p className="font-paragraph text-white/80 text-sm mb-2">Monthly Payout</p>
