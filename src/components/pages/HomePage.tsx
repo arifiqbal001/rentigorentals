@@ -6,6 +6,7 @@ import { Image } from '@/components/ui/image';
 
 const PHONE_NUMBER = '8584004528';
 const PHONE_LINK = `tel:${PHONE_NUMBER}`;
+const WHATSAPP_INVEST_LINK = 'https://wa.me/message/DAMWHHMLIRVRM1';
 
 export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -306,9 +307,11 @@ export default function HomePage() {
               </div>
             </div>
             <div className="mt-12 pt-12 border-t border-white/20">
-              <Button className="w-full bg-[#0066CC] text-white font-heading text-lg py-4 rounded-full hover:bg-[#FFD700] hover:text-black transition-colors">
-                Invest Now <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <a href={WHATSAPP_INVEST_LINK} target="_blank" rel="noopener noreferrer">
+                <Button className="w-full bg-[#0066CC] text-white font-heading text-lg py-4 rounded-full hover:bg-[#FFD700] hover:text-black transition-colors">
+                  Invest Now <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -330,9 +333,11 @@ export default function HomePage() {
               <Button className="bg-black text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#0066CC] transition-colors">
                 Book Your Ride
               </Button>
-              <Button className="bg-[#0066CC] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-black transition-colors">
-                Become an Investor
-              </Button>
+              <a href={WHATSAPP_INVEST_LINK} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-[#0066CC] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-black transition-colors">
+                  Become an Investor
+                </Button>
+              </a>
             </div>
           </motion.div>
         </div>
