@@ -406,15 +406,15 @@ export default function HomePage() {
       </motion.button>
 
       {/* Floating CTA Button */}
-      <motion.button
-        onClick={() => {}}
+      <motion.a
+        href={BOOKING_PHONE_LINK}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
         className="fixed bottom-8 left-8 w-14 h-14 bg-[#0066CC] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow z-40"
       >
         <Phone className="w-7 h-7 text-white" />
-      </motion.button>
+      </motion.a>
     </div>
   );
 }
