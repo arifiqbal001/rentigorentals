@@ -47,9 +47,13 @@ export default function HomePage() {
         isScrolled ? 'bg-white shadow-md' : 'bg-white'
       }`}>
         <div className="max-w-[120rem] mx-auto px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
+            aria-label="Scroll to top"
+          >
             <Image src="https://static.wixstatic.com/media/2ab110_bcd44db5e63648628967cad01fa030e5~mv2.jpg" alt="Rentigo Tours & Travels Logo" className="h-12 w-auto" />
-          </div>
+          </button>
           <nav className="hidden md:flex gap-8">
             <a href="#services" className="font-paragraph text-sm text-black hover:text-[#0066CC] transition-colors">
               Services
