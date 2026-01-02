@@ -4,8 +4,9 @@ import { Zap, TrendingUp, Shield, MapPin, Phone, MessageCircle, ArrowRight, Chec
 import { Button } from '@/components/ui/button';
 import { Image } from '@/components/ui/image';
 
-const PHONE_NUMBER = '8584004528';
-const PHONE_LINK = `tel:${PHONE_NUMBER}`;
+const PHONE_NUMBER = '9330315009';
+const PHONE_LINK = `tel:+91${PHONE_NUMBER}`;
+const BOOKING_PHONE_LINK = `tel:+91${PHONE_NUMBER}`;
 const WHATSAPP_INVEST_LINK = 'https://wa.me/message/DAMWHHMLIRVRM1';
 
 export default function HomePage() {
@@ -63,9 +64,11 @@ export default function HomePage() {
               Contact
             </a>
           </nav>
-          <Button className="bg-[#0066CC] text-white font-heading text-sm px-6 py-2 rounded-full hover:bg-black transition-colors">
-            Book Now
-          </Button>
+          <a href={BOOKING_PHONE_LINK}>
+            <Button className="bg-[#0066CC] text-white font-heading text-sm px-6 py-2 rounded-full hover:bg-black transition-colors">
+              Book Now
+            </Button>
+          </a>
         </div>
       </header>
 
@@ -147,9 +150,11 @@ export default function HomePage() {
                   <span className="font-paragraph text-gray-700">Insurance included</span>
                 </li>
               </ul>
-              <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
-                Rent a Scooter
-              </Button>
+              <a href={BOOKING_PHONE_LINK}>
+                <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
+                  Rent a Scooter
+                </Button>
+              </a>
             </motion.div>
 
             {/* Cars & Bikes */}
@@ -182,9 +187,11 @@ export default function HomePage() {
                   <span className="font-paragraph text-gray-700">Free delivery & pickup</span>
                 </li>
               </ul>
-              <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
-                Explore Fleet
-              </Button>
+              <a href={BOOKING_PHONE_LINK}>
+                <Button className="w-full bg-[#0066CC] text-white font-heading rounded-full py-3 hover:bg-black transition-colors">
+                  Explore Fleet
+                </Button>
+              </a>
             </motion.div>
           </motion.div>
         </div>
@@ -330,9 +337,11 @@ export default function HomePage() {
               Join thousands of satisfied customers and experience premium mobility solutions
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-black text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#0066CC] transition-colors">
-                Book Your Ride
-              </Button>
+              <a href={BOOKING_PHONE_LINK}>
+                <Button className="bg-black text-white font-heading text-base px-8 py-3 rounded-full hover:bg-[#0066CC] transition-colors">
+                  Book Your Ride
+                </Button>
+              </a>
               <a href={WHATSAPP_INVEST_LINK} target="_blank" rel="noopener noreferrer">
                 <Button className="bg-[#0066CC] text-white font-heading text-base px-8 py-3 rounded-full hover:bg-black transition-colors">
                   Become an Investor
