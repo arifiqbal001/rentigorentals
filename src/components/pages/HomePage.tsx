@@ -395,15 +395,17 @@ export default function HomePage() {
       </footer>
 
       {/* Floating WhatsApp Button */}
-      <motion.button
-        onClick={() => {}}
+      <motion.a
+        href="https://wa.me/message/V5CZDZ4UYO5GI1"
+        target="_blank"
+        rel="noopener noreferrer"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
         className="fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow z-40"
       >
         <MessageCircle className="w-7 h-7 text-white" />
-      </motion.button>
+      </motion.a>
 
       {/* Floating CTA Button */}
       <motion.a
