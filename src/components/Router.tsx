@@ -8,6 +8,7 @@ import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 // Lazy load page components to prevent circular imports
 const HomePage = lazy(() => import('@/components/pages/HomePage'));
 const FleetPage = lazy(() => import('@/components/pages/FleetPage'));
+const VehicleDetailPage = lazy(() => import('@/components/pages/VehicleDetailPage'));
 const AboutPage = lazy(() => import('@/components/pages/AboutPage'));
 const ContactPage = lazy(() => import('@/components/pages/ContactPage'));
 const BookingPage = lazy(() => import('@/components/pages/BookingPage'));
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "fleet",
         element: <FleetPage />,
+      },
+      {
+        path: "fleet/:slug",
+        element: <VehicleDetailPage />,
       },
       {
         path: "about",
