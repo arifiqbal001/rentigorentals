@@ -78,7 +78,6 @@ export default function ThankYouPage() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Thank You Section */}
       <section className="pt-32 pb-24 px-6 md:px-8 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-2xl mx-auto">
           <motion.div
