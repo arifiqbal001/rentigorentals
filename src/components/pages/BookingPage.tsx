@@ -1,4 +1,4 @@
-import { Vehicles } from '@/components/entities';
+import { Vehicles } from '@/entities';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
