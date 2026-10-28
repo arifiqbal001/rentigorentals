@@ -5,7 +5,7 @@ const PHONE_NUMBER = '9330315009';
 const PHONE_LINK = `tel:+91${PHONE_NUMBER}`;
 const EMAIL = 'info@rentigo.com';
 
-export default function Footer() {
+function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -163,3 +163,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;
