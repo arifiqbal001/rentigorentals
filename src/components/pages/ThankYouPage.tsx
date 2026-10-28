@@ -13,22 +13,33 @@ const EMAIL = 'info@rentigo.com';
 export default function ThankYouPage() {
   const navigate = useNavigate();
   const [bookingData, setBookingData] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Retrieve booking data from session storage
-    const data = sessionStorage.getItem('bookingData');
-    if (data) {
-      setBookingData(JSON.parse(data));
-      // Clear the session storage after retrieving
-      sessionStorage.removeItem('bookingData');
-    } else {
-      // If no booking data, redirect to home after 5 seconds
+    try {
+      // Retrieve booking data from session storage
+      const data = sessionStorage.getItem('bookingData');
+      if (data) {
+        setBookingData(JSON.parse(data));
+        // Clear the session storage after retrieving
+        sessionStorage.removeItem('bookingData');
+      }
+    } catch (error) {
+      console.error('Error parsing booking data:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    // If no booking data after loading, redirect to home after 5 seconds
+    if (!isLoading && !bookingData) {
       const timer = setTimeout(() => {
         navigate('/');
       }, 5000);
       return () => clearTimeout(timer);
     }
-  }, [navigate]);
+  }, [isLoading, bookingData, navigate]);
 
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.95 },
@@ -43,6 +54,25 @@ export default function ThankYouPage() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header />
+        <section className="pt-32 pb-24 px-6 md:px-8 bg-gradient-to-br from-gray-50 to-white">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="animate-pulse">
+              <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-8"></div>
+              <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
+              <div className="h-4 bg-gray-200 rounded w-full mx-auto mb-2"></div>
+              <div className="h-4 bg-gray-200 rounded w-5/6 mx-auto"></div>
+            </div>
+          </div>
+        </section>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
