@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Calendar, Clock, MapPin, User, Phone, Mail, MessageSquare, ChevronRight } from 'lucide-react';
+import { Vehicles } from '@/components/entities';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { BaseCrudService } from '@/integrations';
-import { Vehicles } from '@/entities';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
+import { Textarea } from '@/components/ui/textarea';
+import { BaseCrudService } from '@/integrations';
+import { motion } from 'framer-motion';
+import { Calendar, ChevronRight, MapPin, User } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function BookingPage() {
   const navigate = useNavigate();

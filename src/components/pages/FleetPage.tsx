@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Users, MapPin, Zap, ChevronRight } from 'lucide-react';
+import { Vehicles } from '@/components/entities';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Image } from '@/components/ui/image';
-import { Link } from 'react-router-dom';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { BaseCrudService } from '@/integrations';
-import { Vehicles } from '@/entities';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
+import { BaseCrudService } from '@/integrations';
+import { motion } from 'framer-motion';
+import { ChevronRight, MapPin, Users, Zap } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function FleetPage() {
   const [vehicles, setVehicles] = useState<Vehicles[]>([]);
@@ -37,7 +37,7 @@ export default function FleetPage() {
 
   // Filter out scooters and bikes - only show cars
   const carsOnly = vehicles.filter((v) => v.type && !['scooty', 'bike', 'scooter'].includes(v.type.toLowerCase()));
-  
+
   const vehicleTypes = ['all', ...new Set(carsOnly.map((v) => v.type).filter(Boolean))];
   const transmissionTypes = ['all', ...new Set(carsOnly.map((v) => v.transmissionType).filter(Boolean))];
   const fuelTypes = ['all', ...new Set(carsOnly.map((v) => v.fuelType).filter(Boolean))];
@@ -268,7 +268,7 @@ export default function FleetPage() {
                       <Link to={getVehicleDetailLink(vehicle)} className="block hover:text-blue-600 transition-colors">
                         <h3 className="font-heading text-2xl text-gray-900 mb-2 cursor-pointer">{vehicle.name || 'Vehicle Name'}</h3>
                       </Link>
-                      
+
                       {vehicle.type && (
                         <p className="font-paragraph text-sm text-blue-600 mb-4 capitalize">{vehicle.type}</p>
                       )}

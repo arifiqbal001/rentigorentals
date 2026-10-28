@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronLeft, Users, Zap, MapPin, MessageCircle, Calendar, AlertCircle } from 'lucide-react';
+import { Vehicles } from '@/components/entities';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Image } from '@/components/ui/image';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { BaseCrudService } from '@/integrations';
-import { Vehicles } from '@/entities';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
+import { BaseCrudService } from '@/integrations';
+import { motion } from 'framer-motion';
+import { AlertCircle, Calendar, ChevronLeft, MessageCircle, Users, Zap } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function VehicleDetailPage() {
   const { slug } = useParams<{ slug: string }>();
