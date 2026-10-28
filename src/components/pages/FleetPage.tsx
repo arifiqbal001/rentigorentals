@@ -31,10 +31,13 @@ export default function FleetPage() {
     }
   };
 
-  const vehicleTypes = ['all', ...new Set(vehicles.map((v) => v.type).filter(Boolean))];
+  // Filter out scooters and bikes - only show cars
+  const carsOnly = vehicles.filter((v) => v.type && !['scooty', 'bike', 'scooter'].includes(v.type.toLowerCase()));
+  
+  const vehicleTypes = ['all', ...new Set(carsOnly.map((v) => v.type).filter(Boolean))];
 
   const filteredVehicles =
-    selectedType === 'all' ? vehicles : vehicles.filter((v) => v.type === selectedType);
+    selectedType === 'all' ? carsOnly : carsOnly.filter((v) => v.type === selectedType);
 
   const containerVariants = {
     hidden: { opacity: 0 },
