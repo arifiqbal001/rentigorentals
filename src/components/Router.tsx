@@ -1,20 +1,26 @@
 import { MemberProvider } from '@/integrations';
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import { ScrollToTop } from '@/lib/scroll-to-top';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
-import HomePage from '@/components/pages/HomePage';
-import FleetPage from '@/components/pages/FleetPage';
-import AboutPage from '@/components/pages/AboutPage';
-import ContactPage from '@/components/pages/ContactPage';
-import BookingPage from '@/components/pages/BookingPage';
-import ThankYouPage from '@/components/pages/ThankYouPage';
+
+// Lazy load page components to prevent circular imports
+const HomePage = lazy(() => import('@/components/pages/HomePage'));
+const FleetPage = lazy(() => import('@/components/pages/FleetPage'));
+const AboutPage = lazy(() => import('@/components/pages/AboutPage'));
+const ContactPage = lazy(() => import('@/components/pages/ContactPage'));
+const BookingPage = lazy(() => import('@/components/pages/BookingPage'));
+const ThankYouPage = lazy(() => import('@/components/pages/ThankYouPage'));
 
 // Layout component that includes ScrollToTop
 function Layout() {
   return (
     <>
       <ScrollToTop />
-      <Outlet />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
