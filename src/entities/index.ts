@@ -17,7 +17,7 @@ export interface Vehicles {
   type?: string;
   /** @wixFieldType text */
   description?: string;
-  /** @wixFieldType image */
+  /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
   mainImage?: string;
   /** @wixFieldType number */
   rentalPricePerDay?: number;
