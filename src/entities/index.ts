@@ -40,3 +40,31 @@ export interface Vehicles {
   /** @wixFieldType number */
   numberOfSeats?: number;
 }
+
+/**
+ * Collection ID: bookings
+ * Interface for Bookings (booking requests from the website forms)
+ */
+export interface Bookings {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  /** @wixFieldType text */
+  customerName?: string;
+  /** @wixFieldType text */
+  phone?: string;
+  /** @wixFieldType text */
+  vehicleName?: string;
+  /** @wixFieldType text */
+  pickupDate?: string;
+  /** @wixFieldType text */
+  pickupTime?: string;
+  /** @wixFieldType text */
+  dropDate?: string;
+  /** @wixFieldType text */
+  dropTime?: string;
+  /** @wixFieldType text */
+  note?: string;
+  /** @wixFieldType text */
+  status?: string;
+}

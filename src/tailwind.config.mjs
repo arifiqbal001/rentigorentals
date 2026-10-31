@@ -23,15 +23,15 @@ export default {
                 paragraph: "avenir-lt-w01_35-light1475496"
             },
             colors: {
-                borderaccent: '#E60023',
-                foreground: '#E60023',
+                borderaccent: '#1E5BFF',
+                foreground: '#0B0B0F',
                 destructive: '#DF3131',
                 destructiveforeground: '#FFFFFF',
                 background: '#FFFFFF',
-                secondary: '#F7F5F2',
-                'secondary-foreground': '#E60023',
+                secondary: '#F2F5FF',
+                'secondary-foreground': '#0B0B0F',
                 'primary-foreground': '#FFFFFF',
-                primary: '#E60023'
+                primary: '#1E5BFF'
             },
         },
     },
